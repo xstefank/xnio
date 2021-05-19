@@ -1,0 +1,18 @@
+name: Component deploy
+
+on:
+  push:
+    branch:
+      3.7
+  workflow_dispatch:
+
+jobs:
+  deploy-eap-action:
+    runs-on: ubuntu-latest
+    name: Deploy to the test nexus
+    steps:
+      - uses: actions/checkout@v2
+      - uses: xstefank/component-deploy-action@main
+        with:
+          token: ${{ secrets.NEXUS_SECRET_PASSPHRASE }}
+          additional-params: -DskipTests
