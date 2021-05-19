@@ -69,6 +69,7 @@ public abstract class AbstractNioChannelPipeTest<S extends StreamSourceChannel, 
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
     protected void doConnectionTest(final Runnable body, final ChannelListener<? extends S> leftChannelHandler, final ChannelListener<? super T> rightChannelHandler) throws Exception {
+        String s = null;
         final Xnio xnio = Xnio.getInstance("nio", NioFullDuplexChannelPipeTestCase.class.getClassLoader());
         @SuppressWarnings("deprecation")
         final XnioWorker worker = xnio.createWorker(OptionMap.create(Options.WORKER_WRITE_THREADS, 2, Options.WORKER_READ_THREADS, 2));
